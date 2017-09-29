@@ -29,25 +29,7 @@ def injectBMT(in_bmd, in_bmt, out_bmd):
     offset = 0x20
     while(True):
         tempStr, = struct.unpack_from('4s', bmdData, offset)
-        if tempStr == b'INF1':
-            tempInt, = struct.unpack_from('>I', bmdData, offset+4)
-            offset+=tempInt
-        elif tempStr == b'VTX1':
-            tempInt, = struct.unpack_from('>I', bmdData, offset+4)
-            offset+=tempInt
-        elif tempStr == b'EVP1':
-            tempInt, = struct.unpack_from('>I', bmdData, offset+4)
-            offset+=tempInt
-        elif tempStr == b'DRW1':
-            tempInt, = struct.unpack_from('>I', bmdData, offset+4)
-            offset+=tempInt
-        elif tempStr == b'JNT1':
-            tempInt, = struct.unpack_from('>I', bmdData, offset+4)
-            offset+=tempInt
-        elif tempStr == b'SHP1':
-            tempInt, = struct.unpack_from('>I', bmdData, offset+4)
-            offset+=tempInt
-        elif tempStr == b'MAT3':
+        if tempStr != b'TEX1':
             tempInt, = struct.unpack_from('>I', bmdData, offset+4)
             offset+=tempInt
         elif tempStr == b'TEX1':
